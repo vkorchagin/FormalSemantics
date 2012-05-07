@@ -1,0 +1,14 @@
+.clear
+john likes mary
+john hates sam
+mary likes sam
+mary hates john
+sam likes mary
+sam hates mary
+sam likes john
+.dump
+whom does mary like
+whom does sam like and hate
+who likes mary
+who likes john
+who likes mary and likes john
