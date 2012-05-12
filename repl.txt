@@ -1,6 +1,7 @@
 S::(B)(A) -> NP:=A VP:=B
 S::(B)(A) -> NPWH:=B AUX S:=A
 S::(B)(A) -> NPWH:=B VP:=A
+S::(B)(\z.A) -> NPYN:=B S:=A
 S::(\z.S) !-> S/NP/Z:=S
 S/NP/Z::(B)(A) -> NP:=A VP/Z:=B
 
@@ -18,8 +19,11 @@ V::(\y.\x.Likes(x,y)) -> likes
 V::(\y.\x.Hates(x,y)) -> hate
 V::(\y.\x.Hates(x,y)) -> hates
 
+NPYN::(\z.A) -> NN S:=A
+
 NPWH::(\P.P) -> whom
 NPWH::(\P.P) -> who
+NPYN::(\P.P) -> does
 
 NN::John -> john
 NN::Mary -> mary

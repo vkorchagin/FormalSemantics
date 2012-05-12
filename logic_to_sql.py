@@ -16,6 +16,7 @@ class SqlGenerator:
 
     def __init__(self):
         self.type = None
+        self.yes_no_select = False
 
         self.tables = list()
         self.variables = defaultdict(set)
@@ -24,6 +25,7 @@ class SqlGenerator:
         self.stack = []
 
     def is_insert(self, node):
+        print node
         return \
             isinstance(node, nodes.Application) or \
             isinstance(node, nodes.Negation) or \
@@ -126,6 +128,8 @@ class SqlGenerator:
         result_clause = ", ".join(map(
             lambda kv: "%s AS %s" % (self.resolve_value(list(kv[1])[0]), kv[0]),
             self.variables.items()))
+        if not result_clause:
+            result_clause = '*'
         from_clause = ", ".join(map(
             lambda t: "%s AS %s" % t,
             self.tables))
@@ -144,6 +148,12 @@ class SqlGenerator:
             generator = self.make_select(node)
         else:
             raise RuntimeError, "Unable to determine SQL query type; probably expression is too complex."
-
-        for item in generator:
-            yield item
+        
+        # yes/no select or counting select
+        request = generator.next()
+        if '*' in request:
+            yield request + " -- yes_no_select"
+        else:
+            yield request
+            for item in generator:
+                yield item
