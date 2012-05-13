@@ -50,15 +50,15 @@ There are a few service commands:
 
     def cmd_init(self):
         self._execute_sync("CREATE TABLE my_borders(arg0 TEXT, arg1 TEXT)")
-        self._execute_sync("CREATE TABLE my_hates(arg0 TEXT, arg1 TEXT)")
+        self._execute_sync("CREATE TABLE my_wars(arg0 TEXT, arg1 TEXT)")
 
     def cmd_fini(self):
         self._execute_sync("DROP TABLE my_borders")
-        self._execute_sync("DROP TABLE my_hates")
+        self._execute_sync("DROP TABLE my_wars")
 
     def cmd_clear(self):
         self._execute_sync("DELETE FROM my_borders")
-        self._execute_sync("DELETE FROM my_hates")
+        self._execute_sync("DELETE FROM my_wars")
 
     def cmd_debug(self):
         if self.debug:
@@ -80,9 +80,9 @@ There are a few service commands:
         print "== Borders =" + "=" * 70
         for row in self._execute("SELECT * FROM my_borders"):
             print ":", "Borders(%s)" % ", ".join(row)
-        print "== Hates =" + "=" * 70
-        for row in self._execute("SELECT * FROM my_hates"):
-            print ":", "Hates(%s)" % ", ".join(row)
+        print "== Wars =" + "=" * 70
+        for row in self._execute("SELECT * FROM my_wars"):
+            print ":", "Wars(%s)" % ", ".join(row)
 
     def cmd_eval(self, semantics):
         for query in logic_to_sql.SqlGenerator().make_sql(semantics):

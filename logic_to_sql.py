@@ -9,7 +9,7 @@ import logic_ast_nodes as nodes
 class SqlGenerator:
     SYMBOL_MAPPING = {
         "Borders" : 'my_borders',
-        "Hates" : 'my_hates',
+        "Wars" : 'my_wars',
         "John"  : 'John',
         "Mary"  : 'Mary'
     }
