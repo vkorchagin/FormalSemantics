@@ -16,15 +16,17 @@ VP/Z::(\x.A(x)&&B(x)) -> VP/Z:=A AND VP/Z:=B
 
 V::(A) -> V:=A CONJ
 V::(A) -> AUX CONJ V:=A CONJ
+V::(A) -> CONJ V:=A CONJ
 V::(\y.\x.Borders(x,y)) -> border
 V::(\y.\x.Borders(x,y)) -> borders
 V::(\y.\x.Wars(x,y)) -> war
-
-NPYN::(\z.A) -> NN S:=A
+V::(\y.\x.Hates(x,y)) -> hate
+V::(\y.\x.Hates(x,y)) -> hates
 
 NPWH::(\P.P) -> whom
 NPWH::(\P.P) -> who
 NPYN::(\P.P) -> does
+NPYN::(\P.P) -> is
 
 NN::Russia -> russia
 NN::Ukraine -> ukraine
@@ -33,6 +35,7 @@ NN::Usa -> usa
 NN::Mexico -> mexico
 
 AND -> and
+OR -> or
 
 AUX -> do
 AUX -> does

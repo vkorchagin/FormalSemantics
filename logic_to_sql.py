@@ -3,16 +3,20 @@
 
 from collections import defaultdict
 import operator
+import re
 
 import logic_ast_nodes as nodes
 
 class SqlGenerator:
     SYMBOL_MAPPING = {
-        "Borders" : 'my_borders',
-        "Wars" : 'my_wars',
+        "Borders" : 'my_symm_borders',
+        "Wars" : 'my_symm_wars',
+        "Hates" : 'my_hates',
         "John"  : 'John',
-        "Mary"  : 'Mary'
+        "Mary"  : 'Mary',
     }
+
+    SYMMETRIC_PREDICAT_PATTERN = re.compile(r'alias\d+_my_symm_\w+')
 
     def __init__(self):
         self.type = None
@@ -107,15 +111,21 @@ class SqlGenerator:
         for table, column, value in self.constraints:
             inserted_values[table].append( (self.resolve_column(table, column), self.resolve_value(value)) )
         for table in inserted_values.iterkeys():
+            is_symmetric_predicat = False
+            if re.findall(self.SYMMETRIC_PREDICAT_PATTERN, table):
+                is_symmetric_predicat = True
             columns_and_values = inserted_values[table]
 
             columns = map(operator.itemgetter(0), columns_and_values)
             values = map(operator.itemgetter(1), columns_and_values)
 
             table_clause = "%s(%s)" % (reverse_table_mapping[table], ", ".join(columns))
+            symm_table_clause = "%s(%s)" % (reverse_table_mapping[table], ", ".join(reversed(columns)))
             values_clause = "(%s)" % (", ".join(values))
 
             yield "INSERT INTO %s VALUES %s" % (table_clause, values_clause)
+            if is_symmetric_predicat:
+                yield "INSERT INTO %s VALUES %s" % (symm_table_clause, values_clause)
 
     def make_select(self, node):
         self.type = "SELECT"
