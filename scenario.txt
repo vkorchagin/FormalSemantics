@@ -2,9 +2,18 @@
 russia borders upon china
 russia borders upon ukraine
 usa borders upon mexico
+
 usa is at war with russia
 usa is at war with china
+
+russia is ally of china
+russia is ally of ukraine
+usa is ally of mexico
+
 .dump
-who borders usa
-whom does russia borders
+who borders upon usa
+whom does russia borders upon
 who does usa at war with
+
+who does russia ally of
+who does usa ally of
