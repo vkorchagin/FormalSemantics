@@ -15,8 +15,8 @@ VP/Z::(B)(z) -> V:=B
 VP/Z::(\x.A(x)&&B(x)) -> VP/Z:=A AND VP/Z:=B
 
 V::(A) -> V:=A CONJ
-V::(A) -> AUX CONJ V:=A CONJ
 V::(A) -> CONJ V:=A CONJ
+V::(A) -> AUX V:=A
 V::(\y.\x.Borders(x,y)) -> border
 V::(\y.\x.Borders(x,y)) -> borders
 V::(\y.\x.Wars(x,y)) -> war
