@@ -23,6 +23,7 @@ V::(\y.\x.Ally(x,y)) -> ally of
 NPWH::(\P.P) -> whom
 NPWH::(\P.P) -> who
 NPYN::(\P.P) -> does
+NPYN::(\P.P) -> is
 
 NN::Russia -> russia
 NN::Ukraine -> ukraine
@@ -36,8 +37,3 @@ OR -> or
 AUX -> do
 AUX -> does
 AUX -> is
-
-CONJ -> upon
-CONJ -> at
-CONJ -> with
-CONJ -> of
