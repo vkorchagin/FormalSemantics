@@ -346,6 +346,8 @@ def load_grammar(iterable):
         raise RuntimeError, "(unreachable)"
 
     for n, line in enumerate(iterable):
+        if '#' in line:
+            line = line.split('#', 1)[0]
         parts = line.strip().split()
 
         for part in parts:
