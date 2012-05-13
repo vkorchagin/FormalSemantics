@@ -19,17 +19,27 @@ V::(\y.\x.Borders(x,y)) -> border upon
 V::(\y.\x.Borders(x,y)) -> borders upon
 V::(\y.\x.Wars(x,y)) -> at war with 
 V::(\y.\x.Ally(x,y)) -> ally of
+V::(\y.\x.Situated(x,y)) -> situated in
 
 NPWH::(\P.P) -> whom
 NPWH::(\P.P) -> who
+NPWH::(\P.P) -> where
+NPWH::(\P.P) -> what
 NPYN::(\P.P) -> does
 NPYN::(\P.P) -> is
 
+# Countries:
 NN::Russia -> russia
 NN::Ukraine -> ukraine
 NN::China  -> china
 NN::Usa -> usa
 NN::Mexico -> mexico
+
+# Cities:
+NN::Moscow -> moscow
+NN::Voronezh -> voronezh
+NN::Kamensk -> kamensk
+NN::Washington -> washington
 
 AND -> and
 OR -> or

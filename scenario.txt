@@ -10,6 +10,11 @@ russia is ally of china
 russia is ally of ukraine
 usa is ally of mexico
 
+moscow is situated in russia
+voronezh is situated in russia
+kamensk is situated in russia
+washington is situated in usa
+
 .dump
 who borders upon usa
 whom does russia borders upon
@@ -17,3 +22,8 @@ who does usa at war with
 
 who does russia ally of
 who does usa ally of
+
+who borders upon russia and ally of russia
+
+who does situated in russia
+where does washington situated in

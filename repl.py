@@ -52,16 +52,19 @@ There are a few service commands:
         self._execute_sync("CREATE TABLE my_symm_borders(arg0 TEXT, arg1 TEXT)")
         self._execute_sync("CREATE TABLE my_symm_wars(arg0 TEXT, arg1 TEXT)")
         self._execute_sync("CREATE TABLE my_symm_ally(arg0 TEXT, arg1 TEXT)")
+        self._execute_sync("CREATE TABLE my_situated(arg0 TEXT, arg1 TEXT)")
 
     def cmd_fini(self):
         self._execute_sync("DROP TABLE my_symm_borders")
         self._execute_sync("DROP TABLE my_symm_wars")
         self._execute_sync("DROP TABLE my_symm_ally")
+        self._execute_sync("DROP TABLE my_situated")
 
     def cmd_clear(self):
         self._execute_sync("DELETE FROM my_symm_borders")
         self._execute_sync("DELETE FROM my_symm_wars")
         self._execute_sync("DELETE FROM my_symm_ally")
+        self._execute_sync("DELETE FROM my_situated")
 
     def cmd_debug(self):
         if self.debug:
@@ -89,6 +92,9 @@ There are a few service commands:
         print "== Ally =" + "=" * 70
         for row in self._execute("SELECT * FROM my_symm_ally"):
             print ":", "Ally(%s)" % ", ".join(row)
+        print "== Situated =" + '=' * 70
+        for row in self._execute("SELECT * FROM my_situated"):
+            print ":", "Situated(%s)" % ", ".join(row)
 
     def cmd_eval(self, semantics):
         for query in logic_to_sql.SqlGenerator().make_sql(semantics):

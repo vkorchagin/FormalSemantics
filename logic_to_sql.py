@@ -12,6 +12,7 @@ class SqlGenerator:
         "Borders" : 'my_symm_borders',
         "Wars" : 'my_symm_wars',
         "Ally" : 'my_symm_ally',
+        "Situated" : 'my_situated'
     }
 
     SYMMETRIC_PREDICAT_PATTERN = re.compile(r'alias\d+_my_symm_\w+')
