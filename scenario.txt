@@ -2,7 +2,28 @@
 russia borders upon china
 russia borders upon ukraine
 usa borders upon mexico
+
+usa is at war with russia
+usa is at war with china
+
+russia is ally of china
+russia is ally of ukraine
+usa is ally of mexico
+
+moscow is situated in russia
+voronezh is situated in russia
+kamensk is situated in russia
+washington is situated in usa
+
 .dump
-whom does usa borders
-who borders usa
-whom does russia borders
+who borders upon usa
+whom does russia borders upon
+who does usa at war with
+
+who does russia ally of
+who does usa ally of
+
+who borders upon russia and ally of russia
+
+who does situated in russia
+where does washington situated in

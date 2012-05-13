@@ -11,9 +11,8 @@ class SqlGenerator:
     SYMBOL_MAPPING = {
         "Borders" : 'my_symm_borders',
         "Wars" : 'my_symm_wars',
-        "Hates" : 'my_hates',
-        "John"  : 'John',
-        "Mary"  : 'Mary',
+        "Ally" : 'my_symm_ally',
+        "Situated" : 'my_situated'
     }
 
     SYMMETRIC_PREDICAT_PATTERN = re.compile(r'alias\d+_my_symm_\w+')

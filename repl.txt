@@ -15,22 +15,23 @@ VP::(\x.A(x)||B(x)) -> VP:=A OR VP:=B
 VP/Z::(B)(z) -> V:=B
 VP/Z::(\x.A(x)&&B(x)) -> VP/Z:=A AND VP/Z:=B
 
-V::(A) -> V:=A CONJ
-V::(A) -> AUX CONJ V:=A CONJ
-V::(A) -> CONJ V:=A CONJ
-V::(\y.\x.Borders(x,y)) -> border
-V::(\y.\x.Borders(x,y)) -> borders
-V::(\y.\x.Wars(x,y)) -> war
-V::(\y.\x.Hates(x,y)) -> hate
-V::(\y.\x.Hates(x,y)) -> hates
+V::(A) -> AUX V:=A
+V::(\y.\x.Borders(x,y)) -> border upon
+V::(\y.\x.Borders(x,y)) -> borders upon
+V::(\y.\x.Wars(x,y)) -> at war with 
+V::(\y.\x.Ally(x,y)) -> ally of
+V::(\y.\x.Situated(x,y)) -> situated in
 
 NPWH::(\P.P) -> whom
 NPWH::(\P.P) -> who
+NPWH::(\P.P) -> where
+NPWH::(\P.P) -> what
 NPYN::(\P.P) -> does
 NPYN::(\P.P) -> is
 NPHM::(\P.P) -> many
 NPHM::(\P.P) -> much
 
+# Countries:
 NN::Russia -> russia
 NN::Ukraine -> ukraine
 NN::China  -> china
@@ -38,6 +39,12 @@ NN::Usa -> usa
 NN::Mexico -> mexico
 NN::Country -> country
 NN::Country -> countries
+
+# Cities:
+NN::Moscow -> moscow
+NN::Voronezh -> voronezh
+NN::Kamensk -> kamensk
+NN::Washington -> washington
 
 AND -> and
 OR -> or
