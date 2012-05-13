@@ -104,7 +104,7 @@ Symbol.setParseAction(on_symbol)
 
 LeftP  = Suppress("(")
 RightP = Suppress(")")
-CountSymbol = Suppress("#")
+CountSymbol = Suppress("?")
 
 ################################################################################
 # Syntactical Level

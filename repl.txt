@@ -2,7 +2,7 @@ S::(B)(A) -> NP:=A VP:=B
 S::(B)(A) -> NPWH:=B AUX S:=A
 S::(B)(A) -> NPWH:=B VP:=A
 S::(B)(\z.A) -> NPYN:=B S:=A
-S::#\z.(B)(A) !-> ADV NPHM:=B NN AUX S/NP/Z:=A
+S::?\z.(B)(A) !-> ADV NPHM:=B NN AUX S/NP/Z:=A
 S::(\z.S) !-> S/NP/Z:=S
 S/NP/Z::(B)(A) -> NP:=A VP/Z:=B
 
