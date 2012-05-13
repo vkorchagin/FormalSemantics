@@ -1,14 +1,8 @@
 .clear
-john likes mary
-john hates sam
-mary likes sam
-mary hates john
-sam likes mary
-sam hates mary
-sam likes john
+russia borders upon china
+russia borders upon ukraine
+usa borders upon mexico
 .dump
-whom does mary like
-whom does sam like and hate
-who likes mary
-who likes john
-who likes mary and likes john
+whom does usa borders
+who borders usa
+whom does russia borders

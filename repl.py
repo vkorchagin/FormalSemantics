@@ -49,15 +49,15 @@ There are a few service commands:
             pass
 
     def cmd_init(self):
-        self._execute_sync("CREATE TABLE my_likes(arg0 TEXT, arg1 TEXT)")
+        self._execute_sync("CREATE TABLE my_borders(arg0 TEXT, arg1 TEXT)")
         self._execute_sync("CREATE TABLE my_hates(arg0 TEXT, arg1 TEXT)")
 
     def cmd_fini(self):
-        self._execute_sync("DROP TABLE my_likes")
+        self._execute_sync("DROP TABLE my_borders")
         self._execute_sync("DROP TABLE my_hates")
 
     def cmd_clear(self):
-        self._execute_sync("DELETE FROM my_likes")
+        self._execute_sync("DELETE FROM my_borders")
         self._execute_sync("DELETE FROM my_hates")
 
     def cmd_debug(self):
@@ -77,9 +77,9 @@ There are a few service commands:
             print "SQL tracing enabled."
 
     def cmd_dump(self):
-        print "== Likes =" + "=" * 70
-        for row in self._execute("SELECT * FROM my_likes"):
-            print ":", "Likes(%s)" % ", ".join(row)
+        print "== Borders =" + "=" * 70
+        for row in self._execute("SELECT * FROM my_borders"):
+            print ":", "Borders(%s)" % ", ".join(row)
         print "== Hates =" + "=" * 70
         for row in self._execute("SELECT * FROM my_hates"):
             print ":", "Hates(%s)" % ", ".join(row)
