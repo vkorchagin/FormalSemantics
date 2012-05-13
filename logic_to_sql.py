@@ -29,7 +29,6 @@ class SqlGenerator:
         self.stack = []
 
     def is_insert(self, node):
-        print node
         return \
             isinstance(node, nodes.Application) or \
             isinstance(node, nodes.Negation) or \
@@ -38,7 +37,8 @@ class SqlGenerator:
 
     def is_select(self, node):
         return \
-            isinstance(node, nodes.Lambda)
+            isinstance(node, nodes.Lambda) or \
+            isinstance(node, nodes.Count)
 
     def resolve_column(self, table, n):
         return "arg%d" % n
@@ -129,6 +129,7 @@ class SqlGenerator:
 
     def make_select(self, node):
         self.type = "SELECT"
+        is_count_select = False
 
         variables, body = node.uncurry()
         
@@ -138,15 +139,18 @@ class SqlGenerator:
         result_clause = ", ".join(map(
             lambda kv: "%s AS %s" % (self.resolve_value(list(kv[1])[0]), kv[0]),
             self.variables.items()))
-        if not result_clause:
-            result_clause = '*'
         from_clause = ", ".join(map(
             lambda t: "%s AS %s" % t,
             self.tables))
         where_clause = " AND ".join(map(
             lambda c: "%s = %s" % (self.resolve_value(c[0:2]), self.resolve_value(c[2])), 
             self.constraints))
-
+        # yes/no select or counting select
+        if not result_clause:
+            result_clause = '*'
+            where_clause += " -- yes_no_select"
+        elif isinstance(node, nodes.Count):
+            where_clause += " -- count_select"
         yield "SELECT {0} FROM {1} WHERE {2}".format(result_clause, from_clause, where_clause)
 
     def make_sql(self, node):
@@ -158,12 +162,5 @@ class SqlGenerator:
             generator = self.make_select(node)
         else:
             raise RuntimeError, "Unable to determine SQL query type; probably expression is too complex."
-        
-        # yes/no select or counting select
-        request = generator.next()
-        if '*' in request:
-            yield request + " -- yes_no_select"
-        else:
-            yield request
-            for item in generator:
-                yield item
+        for item in generator:
+            yield item

@@ -38,6 +38,10 @@ def on_lambda_expression(string, location, tokens):
     assert(len(tokens) == 2)
     return nodes.Lambda(*tokens)
 
+def on_count_expression(string, location, tokens):
+    assert(len(tokens) == 2)
+    return nodes.Count(*tokens)
+
 def on_formula_expression(string, location, tokens):
     operand_stack = []
     connective_stack = []
@@ -100,6 +104,7 @@ Symbol.setParseAction(on_symbol)
 
 LeftP  = Suppress("(")
 RightP = Suppress(")")
+CountSymbol = Suppress("#")
 
 ################################################################################
 # Syntactical Level
@@ -113,6 +118,8 @@ FormulaExpression.setParseAction(on_formula_expression)
 LambdaExpression = Forward()
 LambdaExpression.setParseAction(on_lambda_expression)
 ParenthesizedExpression = Forward()
+CountExpression = Forward()
+CountExpression.setParseAction(on_count_expression)
 
 ApplicationExpression << (
     ( ParenthesizedExpression | Symbol | IndividualVariable | FunctionalVariable )
@@ -141,7 +148,11 @@ ParenthesizedExpression << (
 )
 
 Expression << (
-    FormulaExpression | LambdaExpression | ParenthesizedExpression
+    FormulaExpression | LambdaExpression | ParenthesizedExpression | CountExpression
+)
+
+CountExpression << (
+    CountSymbol + Suppress("\\") + (JustIndividualVariable | JustFunctionalVariable) + Suppress(".") + Expression
 )
 
 Expression.setName("expression")
@@ -150,6 +161,7 @@ AtomicExpression.setName("atomic_expression")
 FormulaExpression.setName("formula_expression")
 LambdaExpression.setName("binding_expression")
 ParenthesizedExpression.setName("parenthesized_expression")
+CountExpression.setName("count_expression")
 
 if DEBUG:
     Expression.setDebug(True)
@@ -158,6 +170,7 @@ if DEBUG:
     FormulaExpression.setDebug(True)
     LambdaExpression.setDebug(True)
     ParenthesizedExpression.setDebug(True)
+    CountExpression.setDebug(True)
 
 def parse_logic_expression(string):
     result = Expression.parseString(string, parseAll = True)

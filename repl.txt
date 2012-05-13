@@ -2,6 +2,7 @@ S::(B)(A) -> NP:=A VP:=B
 S::(B)(A) -> NPWH:=B AUX S:=A
 S::(B)(A) -> NPWH:=B VP:=A
 S::(B)(\z.A) -> NPYN:=B S:=A
+S::#\z.(B)(A) !-> ADV NPHM:=B NN AUX S/NP/Z:=A
 S::(\z.S) !-> S/NP/Z:=S
 S/NP/Z::(B)(A) -> NP:=A VP/Z:=B
 
@@ -27,12 +28,16 @@ NPWH::(\P.P) -> whom
 NPWH::(\P.P) -> who
 NPYN::(\P.P) -> does
 NPYN::(\P.P) -> is
+NPHM::(\P.P) -> many
+NPHM::(\P.P) -> much
 
 NN::Russia -> russia
 NN::Ukraine -> ukraine
 NN::China  -> china
 NN::Usa -> usa
 NN::Mexico -> mexico
+NN::Country -> country
+NN::Country -> countries
 
 AND -> and
 OR -> or
@@ -40,6 +45,8 @@ OR -> or
 AUX -> do
 AUX -> does
 AUX -> is
+
+ADV -> how
 
 CONJ -> upon
 CONJ -> at

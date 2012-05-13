@@ -93,12 +93,18 @@ There are a few service commands:
     def cmd_eval(self, semantics):
         for query in logic_to_sql.SqlGenerator().make_sql(semantics):
             yes_no_select = query.endswith('-- yes_no_select')
+            count_select = query.endswith('-- count_select')
             if yes_no_select:
                 try:
                     self._execute(query).next()
                     print "YES"
                 except StopIteration:
                     print "NO"
+            elif count_select:
+                count = 0
+                for row in self._execute(query):
+                    count += 1
+                print count
             else:
                 for row in self._execute(query):
                     print ":", " ".join(row)

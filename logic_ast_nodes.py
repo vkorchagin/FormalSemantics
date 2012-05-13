@@ -200,6 +200,12 @@ class Lambda(Node):
             body = body.body
         return (variables, body)
 
+class Count(Lambda):
+    def __str__(self):
+        return "(#\\%s.%s)" % (str(self.variable), str(self.body))
+    def __repr__(self):
+        return "Count(%s, %s)" % (repr(self.variable), repr(self.body))
+    
 class Negation(Node):
     def __init__(self, body):
         super(Negation, self).__init__()
