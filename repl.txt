@@ -52,6 +52,7 @@ OR -> or
 AUX -> do
 AUX -> does
 AUX -> is
+AUX -> are
 
 ADV -> how
 

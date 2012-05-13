@@ -16,14 +16,22 @@ kamensk is situated in russia
 washington is situated in usa
 
 .dump
-who borders upon usa
 whom does russia borders upon
-who does usa at war with
-
+where does washington situated in
 who does russia ally of
-who does usa ally of
+
+who borders upon usa
+who does situated in russia
+who is at war with china 
 
 who borders upon russia and ally of russia
+who is ally of mexico and is at war with russia
+who is at war with china and borders upon mexico 
 
-who does situated in russia
-where does washington situated in
+how many countries does russia border upon
+how many countries does usa at war with
+how many countries are china ally of
+
+is moscow situated in russia
+is kamensk situated in usa
+is china borders upon mexico
