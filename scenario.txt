@@ -2,7 +2,9 @@
 russia borders upon china
 russia borders upon ukraine
 usa borders upon mexico
+usa is at war with russia
+usa is at war with china
 .dump
-whom does usa borders
 who borders usa
 whom does russia borders
+who does usa at war with
